@@ -7,6 +7,7 @@ import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import EducationSection from "../components/EducationSection";
 import SkillsSection from "../components/SkillsSection";
+import ResumeSection from "../components/ResumeSection";
 import toast from "react-hot-toast";
 
 const ProfilePage = () => {
@@ -48,6 +49,7 @@ const ProfilePage = () => {
 			<ExperienceSection userData={userData} isOwnProfile={isOwnProfile} onSave={handleSave} />
 			<EducationSection userData={userData} isOwnProfile={isOwnProfile} onSave={handleSave} />
 			<SkillsSection userData={userData} isOwnProfile={isOwnProfile} onSave={handleSave} />
+			<ResumeSection userData={userData} isOwnProfile={isOwnProfile} onSave={handleSave} />
 		</div>
 	);
 };

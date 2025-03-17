@@ -15,6 +15,7 @@ const notificationSchema = new mongoose.Schema(
 		relatedUser: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
+			
 		},
 		relatedPost: {
 			type: mongoose.Schema.Types.ObjectId,
