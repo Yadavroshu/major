@@ -13,7 +13,7 @@ export const getSuggestedConnections = async (req, res) => {
 			},
 		})
 			.select("name username profilePicture headline")
-			.limit(3);
+			.limit(10);
  
 		res.json(suggestedUser);
 	} catch (error) {
@@ -77,6 +77,32 @@ export const updateProfile = async (req, res) => {
 		res.json(user);
 	} catch (error) {
 		console.error("Error in updateProfile controller:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+};
+
+export const searchUsers = async (req, res) => {
+	try {
+		const  {query}  = req.query;
+        console.log("hello",query)
+		// If no search query is provided, return an empty list
+		if (!query) {
+			return res.json([]);
+		}
+
+		// Find users whose name or username contains the search query (case-insensitive)
+		const users = await User.find({
+			$or: [
+				{ name: { $regex: query, $options: "i" } }, // Case-insensitive search for name
+				{ username: { $regex: query, $options: "i" } }, // Case-insensitive search for username
+			],
+		})
+			.select("name username profilePicture headline")
+			.limit(10); // Limit the number of results
+
+		res.json(users);
+	} catch (error) {
+		console.error("Error in searchUsers controller:", error);
 		res.status(500).json({ message: "Server error" });
 	}
 };
