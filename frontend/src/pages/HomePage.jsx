@@ -42,6 +42,7 @@ const HomePage = () => {
 			console.error("Error fetching search results:", error);
 		}
 	};
+	console.log("auth user : ", authUser)
 
 	return (
 		<div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>

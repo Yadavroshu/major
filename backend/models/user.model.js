@@ -53,6 +53,12 @@ const userSchema = new mongoose.Schema(
 				ref: "User",
 			},
 		],
+		messages: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "User",
+			},
+		],
 	},
 	{ timestamps: true }
 );

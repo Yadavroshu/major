@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import cloudinary from "../lib/cloudinary.js";
+import Message from "../models/messages.model.js";
 
 export const getSuggestedConnections = async (req, res) => {
 	try {
@@ -105,4 +106,56 @@ export const searchUsers = async (req, res) => {
 		console.error("Error in searchUsers controller:", error);
 		res.status(500).json({ message: "Server error" });
 	}
+};
+
+export const getMessageRelatedUsers = async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        // Find messages where the user is either the sender or receiver
+        const messages = await Message.find({
+            $or: [{ senderId: userId }, { receiverId: userId }],
+        });
+
+        // Build a set of unique user IDs the given user conversed with
+        const relatedUserIds = new Set();
+        messages.forEach((msg) => {
+            if (msg.senderId.toString() !== userId) {
+                relatedUserIds.add(msg.senderId.toString());
+            }
+            if (msg.receiverId.toString() !== userId) {
+                relatedUserIds.add(msg.receiverId.toString());
+            }
+        });
+
+        // Fetch user details for these related user IDs
+        const users = await User.find({
+            _id: { $in: Array.from(relatedUserIds) },
+        }).select("name username profilePicture headline");
+
+        return res.status(200).json({ users });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+export const getConversationMessages = async (req, res) => {
+    try {
+        const { userOne, userTwo } = req.body;
+        if (!userOne || !userTwo) {
+            return res.status(400).json({ message: "Both user ids are required" });
+        }
+
+        // Find messages where userOne is the sender and userTwo is the receiver OR vice versa
+        const messages = await Message.find({
+            $or: [
+                { senderId: userOne, receiverId: userTwo },
+                { senderId: userTwo, receiverId: userOne }
+            ]
+        }).sort({ timestamp: 1 }); // Sort by timestamp ascending (oldest first)
+
+        return res.status(200).json({ messages });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
 };
