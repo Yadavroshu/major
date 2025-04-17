@@ -17,6 +17,21 @@ export const getFeedPosts = async (req, res) => {
 	}
 };
 
+export const getLatestPosts = async (req, res) => {
+    try {
+        const posts = await Post.find()  // No filter - get all posts
+            .populate("author", "name username profilePicture headline")
+            .populate("comments.user", "name profilePicture")
+            .sort({ createdAt: -1 })
+            .limit(15);  // Get only the 15 most recent posts
+
+        res.status(200).json(posts);
+    } catch (error) {
+        console.error("Error in getLatestPosts controller:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
 export const createPost = async (req, res) => {
 	try {
 		const { content, image } = req.body;
