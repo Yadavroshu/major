@@ -9,6 +9,8 @@ import NetworkPage from './pages/NetworkPage';
 import PostPage from './pages/PostPage';
 import MessagesPage from './pages/MessagesPage';
 import ProfilePage from './pages/ProfilePage';
+import JobPage from './pages/JobPage';
+import JobDetails from './pages/JobDetails';
 import toast, { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "./lib/axios";
@@ -40,6 +42,8 @@ function App() {
         <Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={"/"} />} />
         <Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
         <Route path='/network' element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />} />
+        <Route path='/jobs' element={authUser ? <JobPage /> : <Navigate to={"/login"} />} />
+        <Route path='/jobs/posting/:id' element={authUser ? <JobDetails /> : <Navigate to={"/login"} />} />
         <Route path='/messages/:reciver' element={authUser ? <MessagesPage /> : <Navigate to={"/login"} />} />
         <Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
 				<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} /> 

@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { Bell, Home, LogOut, User, Users, MessageSquare } from "lucide-react";
+import { Bell, Home, LogOut, User, Users, MessageSquare,Handshake } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import socket from "../../utils/socket.io";
@@ -118,6 +118,14 @@ const Navbar = () => {
 										</span>
 									)}
 								</Link>
+
+
+								<Link to='/jobs' className='text-neutral flex flex-col items-center relative'>
+								<Handshake size={20} />
+									<span className='text-xs hidden md:block'>Jobs</span>
+					
+								</Link>
+
 								<Link to='/notifications' className='text-neutral flex flex-col items-center relative'>
 									<Bell size={20} />
 									<span className='text-xs hidden md:block'>Notifications</span>
@@ -130,6 +138,10 @@ const Navbar = () => {
 										</span>
 									)}
 								</Link>
+
+								
+
+
 								<Link to='/messages/all' className='text-neutral flex flex-col items-center relative'>
 								<MessageSquare size={20} />
 									<span className='text-xs hidden md:block'>Messages</span>

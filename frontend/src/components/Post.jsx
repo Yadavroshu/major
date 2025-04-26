@@ -14,7 +14,15 @@ const Post = ({ post }) => {
     const { data: authUser } = useQuery({ queryKey: ["authUser"] });
     const [showComments, setShowComments] = useState(false);
     const [newComment, setNewComment] = useState("");
+    
+    if (!authUser) return <div>please login first</div>;
+
     const [comments, setComments] = useState(post.comments || []);
+
+    console.log("Post data:", post);
+   
+    if (!post.author) return null;
+   
     const isOwner = authUser._id === post.author._id;
     const isLiked = post.likes.includes(authUser._id);
 
@@ -151,8 +159,8 @@ const Post = ({ post }) => {
                                     <div className='flex items-center mb-1'>
                                         <span className='font-semibold mr-2'>{comment.user.name}</span>
                                         <span className='text-xs text-info'>
-											{formatDistanceToNow(new Date(comment.createdAt))}
-										</span>
+                                            {formatDistanceToNow(new Date(comment.createdAt))}
+                                        </span>
                                     </div>
                                     <p>{comment.content}</p>
                                 </div>
