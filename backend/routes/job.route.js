@@ -7,10 +7,14 @@ import {
     deleteJob,
     applyJob,
     getJobsByPoster,
+    getJobsByRequirement
 } from "../controllers/job.controller.js";
 import { protectRoute } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
+
+
+router.get("/search", protectRoute, getJobsByRequirement);
 
 // Create a new job posting
 router.post("/", protectRoute, createJob);
@@ -32,5 +36,8 @@ router.post("/:id/apply", protectRoute, applyJob);
 
 
 router.get("/poster/:posterId", protectRoute, getJobsByPoster);
+
+
+
 
 export default router;

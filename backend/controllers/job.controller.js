@@ -51,6 +51,29 @@ export const getJobById = async (req, res) => {
     }
 };
 
+
+
+export const getJobsByRequirement = async (req, res) => {
+    try {
+        // Expect a query parameter such as ?requirements=React,JavaScript
+        const { requirements } = req.query;
+        if (!requirements) {
+            return res.status(400).json({ message: "Requirements query parameter is required" });
+        }
+        // Convert the comma-separated string into an array of trimmed strings
+        const reqArray = requirements.split(',').map(item => item.trim()).filter(Boolean);
+        // Find jobs that have at least one matching requirement
+        const jobs = await Job.find({ requirements: { $in: reqArray } })
+            .populate("postedBy", "name username profilePicture")
+            .sort({ createdAt: -1 });
+        
+        res.status(200).json(jobs);
+    } catch (error) {
+        console.error("Error fetching jobs by requirements:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
 // Update a job posting (only allowed for the owner)
 export const updateJob = async (req, res) => {
     try {

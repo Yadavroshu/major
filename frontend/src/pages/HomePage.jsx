@@ -6,6 +6,7 @@ import PostCreation from "../components/PostCreation";
 import Post from "../components/Post";
 import { Users, Search } from "lucide-react";
 import RecommendedUser from "../components/RecommendedUser";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -135,6 +136,23 @@ const HomePage = () => {
 					</div>
 				)}
 
+
+		{/* Jobs Section */}
+                <div className='bg-white rounded-lg shadow p-4 mb-4'>
+                    <h2 className='font-semibold text-lg mb-2'>Looking for Job Opportunities?</h2>
+                    <p className='text-gray-400 text-sm mb-4'>
+                        Explore new job listings and opportunities to kickstart your career. 
+                        Find the perfect role that matches your skills and interests.
+                    </p>
+                    <Link 
+                        to="/jobs" 
+                        className='block text-center bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors duration-300'
+                    >
+                        Find Jobs
+                    </Link>
+                </div>		
+
+		
 				{/* Recommended Users Section */}
 				{recommendedUsers?.length > 0 && (
 					<div className='bg-white rounded-lg shadow p-4'>

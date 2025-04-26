@@ -7,6 +7,7 @@ import { Loader, MessageCircle, Share2, ThumbsUp, Send, Trash2 } from "lucide-re
 import PostAction from './PostAction';
 import { formatDistanceToNow } from 'date-fns';
 import { useParams } from 'react-router-dom';
+import PostLike from './PostLike';
 
 const Post = ({ post }) => {
     const { postId } = useParams();
@@ -130,9 +131,9 @@ const Post = ({ post }) => {
                 {post.image && <img src={post.image} alt='Post content' className='rounded-lg w-full mb-4' />}
 
                 <div className=' text-black flex justify-between text-info'>
-                    <PostAction
-                        icon={<ThumbsUp size={18} className={isLiked ? "text-blue-500  fill-blue-300" : ""} />}
-                        text={`Like (${post.likes.length})`}
+                    <PostLike
+                        isLiked={isLiked} 
+                        count={post.likes.length}
                         onClick={handleLikePost}
                     />
 
