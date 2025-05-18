@@ -96,7 +96,8 @@ const Navbar = () => {
 				<div className='flex justify-between items-center py-3'>
 					<div className='flex items-center space-x-4'>
 						<Link to='/'>
-							<img className='h-12 w-500 rounded' src='/linkup.jpg' alt='LinkedIn' />
+							{/* <img className='h-10 m-1 w-500 rounded' src='/linkup.png' alt='LinkedIn' /> */}
+							<h1 className="text-blue-600 font-extrabold text-3xl">LinkUp</h1>
 						</Link>
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>

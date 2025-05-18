@@ -114,13 +114,13 @@ const HomePage = () => {
 				<div className='bg-white rounded-lg shadow p-4 mb-4'>
 					<h2 className='font-semibold mb-4'>Search Users</h2>
 					<form onSubmit={handleSearch} className='flex items-center border rounded-lg px-3 py-2'>
-						<Search className='text-gray-500 mr-2' />
+						<Search className='text-black mr-2' />
 						<input
 							type='text'
 							placeholder='Search for users...'
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							className='w-full outline-none bg-transparent'
+							className='w-full outline-none bg-transparent '
 						/>
 						<button type='submit' className='ml-2 text-blue-500 font-semibold'>Search</button>
 					</form>
@@ -138,7 +138,7 @@ const HomePage = () => {
 
 
 		{/* Jobs Section */}
-                <div className='bg-white rounded-lg shadow p-4 mb-4'>
+                <div className='bg-gray-100 rounded-lg shadow p-4 mb-4'>
                     <h2 className='font-semibold text-lg mb-2'>Looking for Job Opportunities?</h2>
                     <p className='text-gray-400 text-sm mb-4'>
                         Explore new job listings and opportunities to kickstart your career. 

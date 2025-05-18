@@ -13,7 +13,13 @@ import JobPage from './pages/JobPage';
 import JobDetails from './pages/JobDetails';
 import toast, { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
-import { axiosInstance } from "./lib/axios";
+import { axiosInstance } from "./lib/axios"; 
+import Home from './open_pages/Home';
+import About from './open_pages/About';
+import Features from './open_pages/Features';
+import Contact from './open_pages/Contact';
+import Navbar_Open from './open_pages/Navbar_open';
+import Footer_open from './open_pages/Footer_open';
 
 
 
@@ -35,9 +41,15 @@ function App() {
   });
   if (isLoading) return null;
   return (
+    <>
+    {!authUser && <Navbar_Open />}
     <Layout>
+      {/* {!authUser && <Navbar_Open />} */}
       <Routes>
-        <Route path='/' element={authUser ? <HomePage /> : <Navigate to={"/login"} />} />
+        <Route path='/' element={authUser ? <HomePage /> : <Home/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path='/signup' element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />} />
         <Route path='/login' element={!authUser ? <LoginPage /> : <Navigate to={"/"} />} />
         <Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
@@ -48,8 +60,11 @@ function App() {
         <Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
 				<Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} /> 
       </Routes>
+      {/* {!authUser && <Footer_open />} */}
       <Toaster />
     </Layout>
+    {!authUser && <Footer_open />}
+    </>
   );
 }
 

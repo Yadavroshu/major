@@ -11,7 +11,7 @@ const LoginPage = () => {
 			</div>
 
 			<div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-md'>
-				<div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+				<div className='bg-gray-100 py-8 px-4 shadow sm:rounded-lg sm:px-10'>
 					<LoginForm />
 					<div className='mt-6'>
 						<div className='relative'>
@@ -22,7 +22,7 @@ const LoginPage = () => {
 								<span className='px-2 bg-white text-gray-500'>New to LinkUp?</span>
 							</div>
 						</div>
-						<div className='mt-6'>
+						<div className='mt-6 bg-gray-100'>
 							<Link
 								to='/signup'
 								className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-600 bg-white hover:bg-gray-50'
@@ -37,3 +37,4 @@ const LoginPage = () => {
 	);
 };
 export default LoginPage;
+
