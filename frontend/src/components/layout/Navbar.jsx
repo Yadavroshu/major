@@ -96,12 +96,12 @@ const Navbar = () => {
 				<div className='flex justify-between items-center py-3'>
 					<div className='flex items-center space-x-4'>
 						<Link to='/'>
-<<<<<<< HEAD
+ 
 							{/* <img className='h-10 m-1 w-500 rounded' src='/linkup.png' alt='LinkedIn' /> */}
-							<h1 className="text-blue-600 font-extrabold text-3xl">LinkUp</h1>
-=======
+							{/* <h1 className="text-blue-600 font-extrabold text-3xl">LinkUp</h1> */}
+ 
 							<img className='h-10 m-1 w-500 rounded' src='/linkup.png' alt='LinkedIn' />
->>>>>>> 9a484d056b83826058e22be31a5e6f5e37897cc7
+  
 						</Link>
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>

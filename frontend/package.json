@@ -13,10 +13,7 @@
     "@tanstack/react-query": "^5.68.0",
     "axios": "^1.8.3",
     "date-fns": "^4.1.0",
-<<<<<<< HEAD
-=======
     "framer-motion": "^12.9.4",
->>>>>>> 9a484d056b83826058e22be31a5e6f5e37897cc7
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.482.0",
     "motion": "^12.10.5",
