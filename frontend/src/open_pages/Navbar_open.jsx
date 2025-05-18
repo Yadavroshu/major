@@ -24,7 +24,11 @@ export default function Navbar_open() {
         transition={{ duration: 0.5 }}
       >
         <Link to="/" className="text-2xl font-bold text-blue-600 tracking-wide">
+<<<<<<< HEAD
         <img className='mx-auto h-10 w-auto' src='/linkup.png' alt='LinkUp' />
+=======
+        <img className='mx-auto h-10 w-auto' src='/linkup.png' alt='Linkup' />
+>>>>>>> 9a484d056b83826058e22be31a5e6f5e37897cc7
         </Link>
       </motion.div>
 

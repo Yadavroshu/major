@@ -10,9 +10,15 @@ export default function Footer_open() {
   ];
 
   const socialLinks = [
+<<<<<<< HEAD
     { icon: <FiLinkedin />, url: "https://www.linkedin.com/in/roshani-yadav-268983293/" },
     { icon: <FiGithub />, url: "https://github.com/Yadavroshu" },
     { icon: <FiMail />, url: "https://mail.google.com/mail/u/0/#inbox" },
+=======
+    { icon: <FiLinkedin />, url: "https://linkedin.com" },
+    { icon: <FiGithub />, url: "https://github.com" },
+    { icon: <FiMail />, url: "mailto:your.email@example.com" },
+>>>>>>> 9a484d056b83826058e22be31a5e6f5e37897cc7
     { icon: <FiGlobe />, url: "https://yourwebsite.com" },
   ];
 

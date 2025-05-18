@@ -6,7 +6,7 @@ const SignUpPage = () => {
 		<div className='min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
 
 			<div className=' sm:mx-auto sm:w-full sm:max-w-md'>
-				<img className='mx-auto h-36 w-auto' src='/linkup.jpg' alt='LinkedIn' />
+			<img className='mx-auto h-12 w-auto m-4' src='/linkup.png' alt='Linkup' />
 				<h2 className='text-center text-3xl font-extrabold text-black'>
 					Make the most of your professional life
 				</h2>
