@@ -23,7 +23,7 @@
 //             // If routeReciver is provided, fetch that user’s public profile.
 //             const fetchPublicProfile = async () => {
 //                 try {
-//                     const response = await axios.get(`http://localhost:5001/api/v1/users/${routeReciver}`, { withCredentials: true });
+//                     const response = await axios.get(` ${import.meta.env.VITE_BACKEND}/api/v1/users/${routeReciver}`, { withCredentials: true });
 //                     console.log("Public profile data:", response.data);
 //                     setSendTo(response.data);
 //                 } catch (error) {
@@ -38,7 +38,7 @@
 //             // If no reciver param, fetch the message users for the logged in user.
 //             const fetchMessageUsers = async () => {
 //                 try {
-//                     const response = await axios.get(`http://localhost:5001/api/v1/users/userMessages/${user._id}`, { withCredentials: true });
+//                     const response = await axios.get(` ${import.meta.env.VITE_BACKEND}/api/v1/users/userMessages/${user._id}`, { withCredentials: true });
 //                     console.log("Fetched message users:", response.data);
 //                     if (response.data.users) {
 //                         setMessageUsers(response.data.users);
@@ -167,7 +167,7 @@ const MessagesPage = () => {
 		if (routeReciver) {
 			const fetchPublicProfile = async () => {
 				try {
-					const response = await axios.get(`http://localhost:5001/api/v1/users/${routeReciver}`, { withCredentials: true });
+					const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/v1/users/${routeReciver}`, { withCredentials: true });
 					setSendTo(response.data);
 				} catch (error) {
 					console.error("Error fetching public profile:", error.response ? error.response.data : error.message);
@@ -177,7 +177,7 @@ const MessagesPage = () => {
 		} else if (user?._id) {
 			const fetchMessageUsers = async () => {
 				try {
-					const response = await axios.get(`http://localhost:5001/api/v1/users/userMessages/${user._id}`, { withCredentials: true });
+					const response = await axios.get(`${import.meta.env.VITE_BACKEND}/api/v1/users/userMessages/${user._id}`, { withCredentials: true });
 					if (response.data.users) {
 						setMessageUsers(response.data.users);
 						setReciverId(response.data.users[0]?._id);
